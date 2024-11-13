@@ -1,6 +1,9 @@
 import { LitElement, html, css } from 'lit';
-import '@lion/input/lion-input.js';
-import '@lion/button/lion-button.js';
+import { LionInput } from '@lion/input';
+import { LionButton } from '@lion/button';
+
+customElements.define('lion-input', LionInput);
+customElements.define('lion-button', LionButton);
 
 class AuthenticationComponent extends LitElement {
   static styles = css`
