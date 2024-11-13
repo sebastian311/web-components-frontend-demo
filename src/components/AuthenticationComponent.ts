@@ -1,8 +1,30 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, css } from 'lit';
 
 class AuthenticationComponent extends LitElement {
-  private username: string = '';
-  private password: string = '';
+  username: string = '';
+  password: string = '';
+  errorMessage: string = '';
+
+  static styles = css`
+    .auth-container {
+      display: flex;
+      flex-direction: column;
+      max-width: 300px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    lion-input,
+    lion-button {
+      margin-bottom: 1rem;
+    }
+    .error-message {
+      color: red;
+      margin-top: 1rem;
+    }
+  `;
 
   render() {
     return html`
@@ -10,40 +32,49 @@ class AuthenticationComponent extends LitElement {
         <h2>Login</h2>
         <lion-input
           label="Username"
-          @input=${this.handleUsernameInput}
+          @model-value-changed=${this.handleUsernameInput}
         ></lion-input>
         <lion-input
           type="password"
           label="Password"
-          @input=${this.handlePasswordInput}
+          @model-value-changed=${this.handlePasswordInput}
         ></lion-input>
         <lion-button @click=${this.handleLogin}>Login</lion-button>
+        ${this.errorMessage
+          ? html`<div class="error-message">${this.errorMessage}</div>`
+          : ''}
       </div>
     `;
   }
 
-  handleUsernameInput(e: Event) {
-    const target = e.target as HTMLInputElement;
-    this.username = target.value;
+  handleUsernameInput(e: CustomEvent) {  
+    const inputEl = e.composedPath()[0] as HTMLElement & { modelValue: string };
+    this.username = inputEl.modelValue;
   }
 
-  handlePasswordInput(e: Event) {
-    const target = e.target as HTMLInputElement;
-    this.password = target.value;
+  handlePasswordInput(e: CustomEvent) {
+    const inputEl = e.composedPath()[0] as HTMLElement & { modelValue: string };
+    this.password = inputEl.modelValue;
   }
 
   handleLogin() {
     if (this.username && this.password) {
-      this.dispatchEvent(
-        new CustomEvent('login', {
-          detail: { username: this.username },
-          bubbles: true,
-          composed: true,
-        })
-      );
+      if (this.username === 'admin' && this.password === 'password') {
+        this.dispatchEvent(
+          new CustomEvent('login', {
+            detail: { username: this.username },
+            bubbles: true,
+            composed: true,
+          })
+        );
+        this.errorMessage = ''; // Clear error message on success
+      } else {
+        this.errorMessage = 'Invalid username or password.';
+      }
     } else {
-      alert('Please enter username and password');
+      this.errorMessage = 'Please enter username and password.';
     }
+    this.requestUpdate(); // Manually trigger an update
   }
 }
 
