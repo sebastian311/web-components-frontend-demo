@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "web-dev-server --config web-dev-server.config.js",
+    "start": "web-dev-server --config web-dev-server.config.mjs",
     "test": "web-test-runner \"test/**/*.test.ts\" --node-resolve --playwright"
   },
   "keywords": [],
