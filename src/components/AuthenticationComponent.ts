@@ -1,9 +1,4 @@
-import { LitElement, html, css } from 'lit';
-import { LionInput } from '@lion/input';
-import { LionButton } from '@lion/button';
-
-customElements.define('lion-input', LionInput);
-customElements.define('lion-button', LionButton);
+import { LitElement, html } from 'lit';
 
 class AuthenticationComponent extends LitElement {
   private username: string = '';

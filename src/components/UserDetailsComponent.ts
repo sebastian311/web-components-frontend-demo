@@ -1,7 +1,4 @@
 import { LitElement, html, css } from 'lit';
-import { LionButton } from '@lion/button';
-
-customElements.define('lion-button', LionButton);
 
 class UserDetailsComponent extends LitElement {
   static styles = css`

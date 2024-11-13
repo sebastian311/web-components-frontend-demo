@@ -1,5 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import { globalStyles } from './styles/global-styles';
+import './register-elements.js';
+
 import './components/HeaderComponent.js';
 import './components/FooterComponent.js';
 import './components/AuthenticationComponent.js';
