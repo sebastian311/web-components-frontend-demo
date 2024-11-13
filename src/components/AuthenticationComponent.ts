@@ -9,20 +9,39 @@ class AuthenticationComponent extends LitElement {
     .auth-container {
       display: flex;
       flex-direction: column;
-      max-width: 300px;
+      align-items: center;
+      max-width: 350px;
       margin: 2rem auto;
       padding: 2rem;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-    lion-input,
-    lion-button {
+    h2 {
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+    lion-input {
+      width: 100%;
       margin-bottom: 1rem;
     }
+    lion-button {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #6200ee;
+      color: #fff;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    lion-button:hover {
+      background-color: #3700b3;
+    }
     .error-message {
-      color: red;
+      color: #d32f2f;
       margin-top: 1rem;
+      font-size: 0.9rem;
     }
   `;
 
