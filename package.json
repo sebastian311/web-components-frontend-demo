@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "web-dev-server --config web-dev-server.config.mjs",
-    "test": "web-test-runner \"src/test/**/*.test.ts\" --node-resolve --playwright"
-  },
+    "test": "web-test-runner \"dist/test/**/*.test.js\" --node-resolve --playwright"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
