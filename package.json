@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "web-dev-server --config web-dev-server.config.mjs",
-    "test": "web-test-runner \"test/**/*.test.ts\" --node-resolve --playwright"
+    "test": "web-test-runner \"src/test/**/*.test.ts\" --node-resolve --playwright"
   },
   "keywords": [],
   "author": "",
