@@ -19,31 +19,21 @@ class UserDetailsComponent extends LitElement {
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       font-family: 'Roboto', sans-serif;
     }
-    .user-details-card h2 {
+    h2 {
+      color: #333;
       margin-top: 0;
-      color: #333;
     }
-    .user-details-card p {
-      color: #555;
-      font-size: 1rem;
-      line-height: 1.5;
+    lion-input {
+      margin-bottom: 1rem;
     }
-    .user-info {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      margin-top: 1rem;
+    lion-button {
+      margin-top: 1.5rem;
+      background-color: #d32f2f;
+      color: #fff;
     }
-    .user-info div {
-      display: flex;
-    }
-    .user-info label {
-      font-weight: bold;
-      width: 120px;
-      color: #333;
-    }
-    .user-info span {
-      color: #555;
+    lion-button::part(button) {
+      background-color: #d32f2f;
+      color: #fff;
     }
   `;
 
@@ -52,22 +42,39 @@ class UserDetailsComponent extends LitElement {
       <div class="user-details-card">
         <h2>Welcome, ${this.username}!</h2>
         <p>Here is your account information:</p>
-        <div class="user-info">
-          <div>
-            <label>Username:</label>
-            <span>${this.username}</span>
-          </div>
-          <div>
-            <label>Email:</label>
-            <span>user@example.com</span>
-          </div>
-          <div>
-            <label>Member Since:</label>
-            <span>January 1, 2021</span>
-          </div>
-        </div>
+        <lion-form>
+          <form>
+            <lion-fieldset name="user-details">
+              <lion-input
+                label="Username"
+                .modelValue=${this.username}
+                readonly
+              ></lion-input>
+              <lion-input
+                label="Email"
+                modelValue="user@example.com"
+                readonly
+              ></lion-input>
+              <lion-input
+                label="Member Since"
+                modelValue="January 1, 2021"
+                readonly
+              ></lion-input>
+            </lion-fieldset>
+          </form>
+        </lion-form>
+        <lion-button @click=${this.handleLogout}>Logout</lion-button>
       </div>
     `;
+  }
+
+  handleLogout() {
+    this.dispatchEvent(
+      new CustomEvent('logout', {
+        bubbles: true,
+        composed: true,
+      })
+    );
   }
 }
 

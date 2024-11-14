@@ -1,11 +1,11 @@
-import { LitElement, html, css } from 'lit';
-import { globalStyles } from './styles/global-styles';
-import './register-elements.js';
+import { LitElement, html, css } from "lit";
+import { globalStyles } from "./styles/global-styles";
+import "./register-elements.js";
 
-import './components/HeaderComponent.js';
-import './components/FooterComponent.js';
-import './components/AuthenticationComponent.js';
-import './components/UserDetailsComponent.js';
+import "./components/HeaderComponent.js";
+import "./components/FooterComponent.js";
+import "./components/AuthenticationComponent.js";
+import "./components/UserDetailsComponent.js";
 
 class App extends LitElement {
   static styles = [
@@ -17,12 +17,20 @@ class App extends LitElement {
     `,
   ];
 
-  // Manage authentication state
-  private isLoggedIn = false;
-  private username = '';
+  static get properties() {
+    return {
+      isLoggedIn: { type: Boolean },
+      username: { type: String },
+    };
+  }
+
+  declare isLoggedIn: boolean;
+  declare username: string;
 
   constructor() {
     super();
+    this.isLoggedIn = false;
+    this.username = "";
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
   }
@@ -51,14 +59,12 @@ class App extends LitElement {
   handleLogin(event: CustomEvent) {
     this.isLoggedIn = true;
     this.username = event.detail.username;
-    this.requestUpdate();
   }
 
   handleLogout() {
     this.isLoggedIn = false;
-    this.username = '';
-    this.requestUpdate();
+    this.username = "";
   }
 }
 
-customElements.define('my-app', App);
+customElements.define("my-app", App);
