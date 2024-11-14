@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 
-class HeaderComponent extends LitElement {
+export class HeaderComponent extends LitElement {
   static styles = css`
     header {
       background-color: #6200ee;

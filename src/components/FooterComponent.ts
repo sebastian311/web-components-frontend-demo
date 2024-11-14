@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 
-class FooterComponent extends LitElement {
+export class FooterComponent extends LitElement {
   static styles = css`
     footer {
       background-color: #6200ee;

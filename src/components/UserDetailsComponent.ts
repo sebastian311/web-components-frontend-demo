@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 
-class UserDetailsComponent extends LitElement {
+export class UserDetailsComponent extends LitElement {
   static get properties() {
     return {
       username: { type: String },

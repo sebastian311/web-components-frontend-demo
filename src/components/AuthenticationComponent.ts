@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 
-class AuthenticationComponent extends LitElement {
+export class AuthenticationComponent extends LitElement {
   username: string = '';
   password: string = '';
   errorMessage: string = '';
