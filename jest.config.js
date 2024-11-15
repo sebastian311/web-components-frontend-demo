@@ -14,5 +14,6 @@ module.exports = {
       '^lit$': '<rootDir>/node_modules/lit/index.js',
     },
     resolver: undefined,
+    testPathIgnorePatterns: ['<rootDir>/dist/'], // Exclude compiled files
   };
   
