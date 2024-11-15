@@ -1,0 +1,1 @@
+{"root":["../src/app.ts","../src/register-elements.ts","../src/components/authenticationcomponent.ts","../src/components/footercomponent.ts","../src/components/headercomponent.ts","../src/components/userdetailscomponent.ts","../src/styles/global-styles.ts","../src/test/footercomponent.test.ts","../src/test/headercomponent.test.ts"],"version":"5.6.3"}

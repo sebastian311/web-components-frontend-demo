@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "ES2020",
+    "target": "ES2020", // ES2020 is fine, works well with lit
+    "module": "ESNext", // Change to ESNext for full ES module support
     "moduleResolution": "node",
     "outDir": "./dist",
     "rootDir": ".",
@@ -9,8 +9,11 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "lib": ["ES2020", "DOM"],
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "resolveJsonModule": true, // Optional: If using JSON imports
+    "types": ["jest"], // Ensure Jest types are included
+    "allowJs": true // Optional: If any JS files are included in tests
   },
-  "include": ["src/**/*", "test/**/*"],
+  "include": ["src/**/*", "test/**/*", "jest.config.mjs"],
   "exclude": ["node_modules"]
 }

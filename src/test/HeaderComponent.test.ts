@@ -1,11 +1,22 @@
-import { expect, fixture, html } from '@open-wc/testing';
-import '../src/components/HeaderComponent.js';
+import '../components/HeaderComponent';
 
 describe('HeaderComponent', () => {
-  it('should render the header', async () => {
-    const el = await fixture(html`<header-component></header-component>`);
-    const header = el.shadowRoot?.querySelector('header');
-    expect(header).to.exist;
-    expect(header?.textContent).to.include('My Web Components App');
+  let element: HTMLElement;
+
+  beforeEach(() => {
+    // Directly create an instance of HeaderComponent
+    element = document.createElement('header-component') as HTMLElement;
+    document.body.appendChild(element);
+  });
+
+  afterEach(() => {
+    // Clean up after each test
+    document.body.removeChild(element);
+  });
+
+  it('should render the header', () => {
+    const header = element.shadowRoot?.querySelector('header');
+    expect(header).not.toBeNull();
+    expect(header?.textContent).toContain('My Web Components App');
   });
 });
